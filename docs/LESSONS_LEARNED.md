@@ -54,3 +54,41 @@ Aprendizados acumulados durante o desenvolvimento do LabOps.
 ### Frase da Sprint
 
 > Um bom módulo não apenas instala. Ele opera, diagnostica e ajuda a manter o ambiente saudável.
+----------------------
+
+---
+
+## Lição - Porta 80 interceptada pelo Traefik/Kubernetes
+
+Durante a configuração do módulo Nginx Gateway, o LabOps respondia corretamente em `localhost`, mas retornava `404 page not found` ao acessar pelo IP da rede.
+
+### O que aconteceu
+
+O Nginx do LabOps estava funcionando corretamente, porém a porta `80` estava sendo interceptada por regras do Kubernetes/K3s e pelo Traefik.
+
+A evidência apareceu nas regras de NAT:
+
+```text
+kube-system/traefik:web loadbalancer IP
+-d 192.168.15.27/32 ... --dport 80````
+
+Mesmo com o container labops-nginx parado, o IP do servidor continuava respondendo 404, provando que a resposta não vinha do Nginx do LabOps.
+
+##Como resolvemos
+
+Alteramos o mapeamento de porta do Gateway:
+
+ports:
+  - "8080:80"
+
+Com isso, o LabOps passou a responder corretamente em:
+
+http://192.168.15.27:8080
+
+##Aprendizado
+
+Nem todo erro HTTP vem da aplicação que estamos configurando. Em ambientes com Docker, Kubernetes, Traefik, iptables e múltiplas interfaces de rede, o tráfego pode ser interceptado antes de chegar ao serviço esperado.
+
+##Frase da lição
+
+O serviço pode estar certo, mas a rede pode estar levando a requisição para outro lugar.
