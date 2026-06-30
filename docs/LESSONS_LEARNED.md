@@ -54,3 +54,48 @@ Aprendizados acumulados durante o desenvolvimento do LabOps.
 ### Frase da Sprint
 
 > Um bom módulo não apenas instala. Ele opera, diagnostica e ajuda a manter o ambiente saudável.
+
+--------------------------------------------------
+
+---
+
+## Lição - Conflito de Merge
+
+Durante o merge da branch `develop` para a branch `main`, ocorreu um conflito no arquivo `README.md`.
+
+### O que aconteceu
+
+O Git identificou que o mesmo trecho do arquivo havia sido alterado em branches diferentes. Por isso, ele não conseguiu decidir automaticamente qual versão deveria ser mantida.
+
+### Como identificamos
+
+O Git informou:
+
+```text
+README.md: needs merge
+error: you need to resolve your current index first ```
+
+Ao abrir o arquivo, os conflitos aparecem com marcadores como:
+
+<<<<<<< HEAD
+conteúdo da branch atual
+=======
+conteúdo da outra branch
+>>>>>>> develop
+
+##Como resolvemos
+Abrimos o arquivo em conflito.
+
+Escolhemos a versão correta.
+Removemos os marcadores do Git.
+Salvamos o arquivo.
+Marcamos como resolvido com git add.
+Finalizamos com git commit.
+
+##Aprendizado
+
+Conflitos de merge são normais em projetos versionados. O importante é saber ler a mensagem do Git, localizar os marcadores de conflito, escolher a versão correta e concluir o merge com segurança.
+
+##Frase da lição
+
+Problemas em Git não são falhas do projeto. São oportunidades de entender melhor como o versionamento funciona.
