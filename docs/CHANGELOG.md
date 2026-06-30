@@ -9,6 +9,32 @@ O projeto segue versionamento semântico:
 - PATCH: correções
 ----------------------------------------------
 
+## [1.1.1] - Docker Polish
+
+### Adicionado
+
+- Listagem de containers Docker.
+- Listagem de imagens Docker.
+- Consulta de uso de disco do Docker.
+- Docker Doctor para diagnóstico básico.
+- Limpeza segura de containers parados, imagens não utilizadas e cache de build.
+- Menu Docker expandido.
+
+### Melhorado
+
+- Módulo Docker agora possui recursos básicos de administração.
+- Menu Docker ficou mais completo e preparado para próximos serviços.
+
+### Validado
+
+- Status do Docker funcionando.
+- Listagem de containers funcionando.
+- Listagem de imagens funcionando.
+- Uso de disco Docker funcionando.
+- Docker Doctor funcionando.
+- Teste hello-world executado com sucesso.
+
+-------------------
 ## [1.1.0] - Docker
 
 ### Adicionado
@@ -30,7 +56,7 @@ O projeto segue versionamento semântico:
 - Docker Compose Plugin funcionando.
 - `sudo docker run hello-world` executado com sucesso.
 
----
+------------
 
 ## [1.0.0] - Foundation
 

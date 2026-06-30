@@ -58,3 +58,36 @@ Docker instalado, iniciado e validado com sucesso usando o teste `hello-world`.
 ### Aprendizado
 
 Serviços Linux podem depender de sockets do systemd. Ao automatizar infraestrutura, não basta instalar pacotes; é necessário validar como os serviços são inicializados.
+
+---------------------------------------------------------
+
+---
+
+## 2026-06-30
+
+### Sprint
+
+v1.1.1 - Docker Polish
+
+### Decisão
+
+Aprimorar o módulo Docker antes de avançar para os próximos serviços.
+
+### Motivo
+
+Como Docker será a base para Nginx, PostgreSQL, Grafana, Portainer e Ollama, foi decidido fortalecer primeiro o gerenciamento básico de containers, imagens, disco e diagnóstico.
+
+### Resultado
+
+O módulo Docker passou a oferecer:
+
+- Listagem de containers
+- Listagem de imagens
+- Consulta de uso de disco
+- Diagnóstico com Docker Doctor
+- Limpeza segura
+- Menu expandido
+
+### Aprendizado
+
+Antes de construir novos serviços sobre uma base, é importante garantir que a base tenha ferramentas de diagnóstico, manutenção e operação.

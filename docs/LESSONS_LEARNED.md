@@ -35,3 +35,22 @@ Aprendizados acumulados durante o desenvolvimento do LabOps.
 ### Frase da Sprint
 
 > Instalar é apenas o começo. Validar, corrigir e documentar é o que torna a infraestrutura confiável.
+
+---
+
+---
+
+## Sprint v1.1.1 - Docker Polish
+
+### O que aprendemos
+
+- Como listar containers Docker via script.
+- Como listar imagens Docker via script.
+- Como verificar uso de disco do Docker.
+- Como criar uma rotina segura de limpeza.
+- Como criar um diagnóstico básico para um serviço.
+- Como melhorar um módulo sem quebrar sua estrutura.
+
+### Frase da Sprint
+
+> Um bom módulo não apenas instala. Ele opera, diagnostica e ajuda a manter o ambiente saudável.
