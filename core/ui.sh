@@ -65,3 +65,14 @@ show_banner() {
     echo -e "${COLOR_WHITE}Docker...:${COLOR_RESET} $(status_dot "$DOCKER_STATUS")"
     print_line
 }
+pause_screen() {
+    echo
+    read -p "Pressione ENTER para voltar ao menu..."
+}
+
+print_header() {
+    echo
+    print_line
+    echo -e "${COLOR_CYAN}$1${COLOR_RESET}"
+    print_line
+}

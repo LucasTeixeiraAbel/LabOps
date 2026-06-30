@@ -33,8 +33,15 @@ show_menu() {
             echo -e "${COLOR_YELLOW}Start Full ainda será implementado.${COLOR_RESET}"
             ;;
         3)
-            echo -e "${COLOR_YELLOW}Módulo Docker ainda será implementado.${COLOR_RESET}"
-            ;;
+    		 if [ -f "$LABOPS_HOME/modules/docker/menu.sh" ]; then
+        source "$LABOPS_HOME/modules/docker/menu.sh"
+        docker_menu
+    		else
+            echo
+            echo -e "${COLOR_RED}Módulo Docker não encontrado.${COLOR_RESET}"
+        pause_screen
+    	fi
+    	    ;;
         4)
             echo -e "${COLOR_YELLOW}Módulo Banco de Dados ainda será implementado.${COLOR_RESET}"
             ;;
