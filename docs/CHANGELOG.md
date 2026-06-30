@@ -7,6 +7,28 @@ O projeto segue versionamento semântico:
 - MAJOR: mudanças grandes
 - MINOR: novas funcionalidades
 - PATCH: correções
+----------------------------------------------
+
+## [1.1.0] - Docker
+
+### Adicionado
+
+- Módulo Docker.
+- Scripts `install.sh`, `start.sh`, `stop.sh`, `status.sh` e `update.sh`.
+- Submenu Docker dentro da CLI do LabOps.
+- Teste `hello-world` pelo menu.
+- Integração do Docker com o Core visual do LabOps.
+
+### Corrigido
+
+- Inicialização do Docker usando `docker.socket`.
+- Funções auxiliares de interface `print_header` e `pause_screen`.
+
+### Validado
+
+- Docker Engine funcionando.
+- Docker Compose Plugin funcionando.
+- `sudo docker run hello-world` executado com sucesso.
 
 ---
 

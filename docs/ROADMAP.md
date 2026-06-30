@@ -27,12 +27,12 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 
 ## LabOps v1.1.0 - Docker
 
-- [ ] Instalar Docker
-- [ ] Instalar Docker Compose
-- [ ] Criar módulo Docker
-- [ ] Criar opção Docker no menu
+- [x] Instalar Docker
+- [x] Instalar Docker Compose
+- [x] Criar módulo Docker
+- [x] Criar opção Docker no menu
 - [ ] Criar Portainer
-- [ ] Documentar módulo Docker
+- [x] Documentar módulo Docker
 
 ---
 
