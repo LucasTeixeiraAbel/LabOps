@@ -1,0 +1,31 @@
+# Runtime files
+runtime/
+logs/
+temp/
+tmp/
+cache/
+pid/
+state/
+
+# Data and backups
+data/
+backups/
+
+# System files
+*.log
+*.pid
+*.lock
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.key
+*.pem
