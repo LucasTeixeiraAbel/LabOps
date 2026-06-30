@@ -36,6 +36,18 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 
 ---
 
+## LabOps v1.1.1 - Docker Polish
+
+- [x] Listar containers Docker
+- [x] Listar imagens Docker
+- [x] Ver uso de disco Docker
+- [x] Criar Docker Doctor
+- [x] Criar limpeza segura
+- [x] Expandir menu Docker
+- [x] Validar funções pelo menu LabOps
+
+---
+
 ## LabOps v1.2.0 - Gateway
 
 - [ ] Instalar Nginx
