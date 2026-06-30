@@ -12,7 +12,7 @@ Construir uma plataforma de laboratório que simule práticas reais de ambientes
 
 ## Versão atual
 
-`v1.0.0 - Foundation`
+`v1.1.0 - Foundation`
 
 ## Objetivos
 
