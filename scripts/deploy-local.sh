@@ -37,6 +37,7 @@ sudo rsync -av --delete "$PROJECT_DIR/compose/" "$INSTALL_DIR/compose/"
 sudo rsync -av --delete "$PROJECT_DIR/docs/" "$INSTALL_DIR/docs/"
 sudo rsync -av --delete "$PROJECT_DIR/assets/" "$INSTALL_DIR/assets/"
 sudo rsync -av --delete "$PROJECT_DIR/scripts/" "$INSTALL_DIR/scripts/"
+sudo rsync -av "$PROJECT_DIR/VERSION" "$INSTALL_DIR/VERSION"
 sudo rsync -av --delete "$PROJECT_DIR/www/" "$INSTALL_DIR/www/"
 
 echo "[4/6] Aplicando configuração..."

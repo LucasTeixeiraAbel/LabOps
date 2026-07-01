@@ -1,7 +1,12 @@
 #!/bin/bash
 
 export LABOPS_HOME="/opt/labops"
-export LABOPS_VERSION="1.0.0"
+
+if [ -f "$LABOPS_HOME/VERSION" ]; then
+    export LABOPS_VERSION="$(cat "$LABOPS_HOME/VERSION")"
+else
+    export LABOPS_VERSION="v0.0.0 - Unknown"
+fi
 
 source "$LABOPS_HOME/core/engine.sh"
 
