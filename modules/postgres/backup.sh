@@ -25,6 +25,7 @@ echo
 
 sudo docker exec labops-postgres sh -c 'pg_dump -U "$POSTGRES_USER" "$POSTGRES_DB"' | gzip | sudo tee "$BACKUP_FILE" >/dev/null
 
+sudo chown root:labops "$BACKUP_FILE" 2>/dev/null || true
 sudo chmod 640 "$BACKUP_FILE"
 
 echo "Backup concluído."

@@ -133,6 +133,19 @@ open_nginx_menu() {
     fi
 }
 
+
+open_postgres_menu() {
+    if [ -f "$LABOPS_HOME/modules/postgres/menu.sh" ]; then
+        log_info "Abrindo módulo PostgreSQL."
+        source "$LABOPS_HOME/modules/postgres/menu.sh"
+        postgres_menu
+    else
+        echo
+        echo -e "${COLOR_RED}Módulo PostgreSQL não encontrado.${COLOR_RESET}"
+        pause_screen
+    fi
+}
+
 quick_start_menu() {
     while true; do
         clear
@@ -350,7 +363,7 @@ show_menu() {
         echo -e "${COLOR_BLUE}[ 5 ]${COLOR_RESET} Inicialização rápida"
         echo -e "${COLOR_BLUE}[ 6 ]${COLOR_RESET} Logs e diagnóstico"
         echo
-        echo -e "${COLOR_YELLOW}[ 7 ]${COLOR_RESET} Banco de Dados"
+        echo -e "${COLOR_GREEN}[ 7 ]${COLOR_RESET} Banco de Dados / PostgreSQL"
         echo -e "${COLOR_YELLOW}[ 8 ]${COLOR_RESET} Monitoramento"
         echo -e "${COLOR_YELLOW}[ 9 ]${COLOR_RESET} IA Offline"
         echo
@@ -387,8 +400,7 @@ show_menu() {
                 logs_menu
                 ;;
             7)
-                log_warn "Módulo Banco de Dados ainda não implementado."
-                show_future_module_message "Banco de Dados"
+                open_postgres_menu
                 ;;
             8)
                 log_warn "Módulo Monitoramento ainda não implementado."

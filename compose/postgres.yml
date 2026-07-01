@@ -20,5 +20,4 @@ services:
 
 networks:
   labops-network:
-    name: labops-network
-    driver: bridge
+    external: true
