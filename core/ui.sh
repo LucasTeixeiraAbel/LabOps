@@ -65,7 +65,12 @@ show_banner() {
     load_info="$(uptime | awk -F'load average: ' '{print $2}')"
 
     local temp_info
-    temp_info="$(sensors 2>/dev/null | awk '/Package id 0|Core 0|temp1/ {print $2; exit}')"
+    temp_info="$(sensors 2>/dev/null | awk '
+        /Package id 0:/ {print $4; exit}
+        /Core 0:/ {print $3; exit}
+        /^temp1:/ {print $2; exit}
+    ')"
+
     if [ -z "$temp_info" ]; then
         temp_info="N/A"
     fi
