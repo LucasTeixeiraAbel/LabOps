@@ -1,3 +1,48 @@
+## [1.3.0] - Database
+
+### Adicionado
+
+- Módulo PostgreSQL Database.
+- Docker Compose para PostgreSQL.
+- Arquivo exemplo de configuração `postgres.env.example`.
+- Configuração real segura fora do Git.
+- Volume persistente em `/opt/labops/data/postgres`.
+- Diretório de backups em `/opt/labops/backups/postgres`.
+- Scripts de instalação, start, stop, status e update.
+- Scripts de backup e restore.
+- Menu próprio do módulo PostgreSQL.
+- Integração com o menu principal do LabOps.
+- Teste de conexão SQL pelo menu.
+- Listagem de backups pelo menu.
+- Exibição de logs do PostgreSQL pelo menu.
+
+### Melhorado
+
+- Menu principal agora possui módulo ativo de Banco de Dados / PostgreSQL.
+- Versão do LabOps centralizada no arquivo `VERSION`.
+- Banner do LabOps passou a usar versão dinâmica.
+- Textos do banner foram centralizados automaticamente.
+- Start do PostgreSQL agora aguarda o banco ficar pronto antes de finalizar.
+
+### Corrigido
+
+- Correção de permissões no volume de dados do PostgreSQL.
+- Correção de conflito de container órfão após mudança de Compose Project.
+- Correção da rede compartilhada `labops-network` como rede externa.
+- Padronização de backups com grupo `labops`.
+- Correção da versão antiga exibida no banner.
+
+### Validado
+
+- PostgreSQL rodando via Docker.
+- Healthcheck retornando `healthy`.
+- `pg_isready` aceitando conexões.
+- Consulta SQL executada com sucesso.
+- Backup `.sql.gz` gerado com sucesso.
+- Menu PostgreSQL funcionando dentro do LabOps.
+- Banner exibindo `v1.3.0 - Database`.
+
+
 # CHANGELOG
 
 Todas as mudanças importantes do LabOps serão documentadas neste arquivo.

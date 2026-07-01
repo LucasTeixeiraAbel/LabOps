@@ -99,3 +99,23 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 - [ ] Criar LabOps Doctor
 - [ ] Criar LabOps Audit
 - [ ] Exportar relatórios
+
+## LabOps v1.3.0 - Database
+
+- [x] Criar módulo PostgreSQL
+- [x] Criar Docker Compose do PostgreSQL
+- [x] Criar arquivo exemplo `postgres.env.example`
+- [x] Manter senha real fora do Git
+- [x] Criar scripts install/start/stop/status/update
+- [x] Criar backup do PostgreSQL
+- [x] Criar restore do PostgreSQL
+- [x] Corrigir permissões do volume de dados
+- [x] Corrigir conflito de Compose Project
+- [x] Configurar rede compartilhada `labops-network`
+- [x] Integrar PostgreSQL ao menu principal
+- [x] Testar conexão SQL pelo menu
+- [x] Validar healthcheck
+- [x] Validar backup
+- [x] Centralizar versão no arquivo VERSION
+- [x] Corrigir banner dinâmico
+- [x] Documentar módulo PostgreSQL

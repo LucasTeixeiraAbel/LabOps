@@ -148,3 +148,116 @@ Em ambientes com Docker, Kubernetes, Traefik, CNI e iptables, o tráfego pode se
 A aplicação pode estar correta, mas a rede pode estar desviando a requisição.
 
 ------------------------------------------------------------
+
+---
+
+## 2026-07-01
+
+### Sprint
+
+v1.3.0 - Database
+
+### Decisão
+
+Adicionar o PostgreSQL como primeiro módulo de banco de dados do LabOps.
+
+### Motivo
+
+O LabOps precisava de uma camada de persistência para suportar futuros serviços, aplicações, dashboards e automações.
+
+O PostgreSQL foi escolhido por ser robusto, amplamente utilizado em ambientes profissionais e adequado para estudos de infraestrutura, DevOps e backend.
+
+### Implementação
+
+Foi criado o módulo `modules/postgres`, contendo scripts para:
+
+- instalação/preparação
+- inicialização
+- parada
+- status
+- atualização
+- backup
+- restore
+- menu interativo
+
+Também foi criado o arquivo `compose/postgres.yml`, usando a imagem `postgres:16-alpine`.
+
+### Segurança
+
+A senha real do banco não foi versionada.
+
+Foi criado apenas o arquivo de exemplo:
+
+    config/postgres/postgres.env.example
+
+A configuração real fica em:
+
+    /opt/labops/config/postgres/postgres.env
+
+### Problema: permissão no volume
+
+Durante os testes, o PostgreSQL apresentou erro ao acessar arquivos internos do banco:
+
+    FATAL: could not open file "base/16384/2601": Permission denied
+
+A causa foi permissão incorreta no volume persistente:
+
+    /opt/labops/data/postgres
+
+A solução foi ajustar o dono do diretório para o usuário PostgreSQL do container.
+
+### Problema: banco rodando, mas ainda não pronto
+
+Foi observado que o container podia estar `Up`, mas o banco ainda não estava pronto para conexão.
+
+A solução foi melhorar o `start.sh` para aguardar `pg_isready` responder antes de finalizar.
+
+### Problema: conflito de container
+
+Após padronizar o nome do Compose Project, um container antigo ficou órfão com o mesmo nome:
+
+    labops-postgres
+
+A solução foi detectar e remover containers antigos preservando os dados no volume persistente.
+
+### Problema: rede Docker compartilhada
+
+O Docker Compose alertou que a rede `labops-network` já existia, mas não pertencia ao projeto PostgreSQL.
+
+A solução foi declarar a rede como externa no Compose.
+
+### Melhoria de core
+
+Durante a sprint, foi identificado que a versão exibida no banner ainda estava fixa como `1.0 - Foundation`.
+
+Foi criado o arquivo central:
+
+    VERSION
+
+A partir dele, o LabOps passou a exibir dinamicamente a versão atual.
+
+### Resultado
+
+O módulo PostgreSQL foi validado com sucesso.
+
+O LabOps agora possui:
+
+- Docker
+- Gateway Nginx
+- PostgreSQL
+- Backup e restore
+- Menu CLI integrado
+- Versionamento centralizado
+- Banner dinâmico
+
+### Aprendizado
+
+Container `running` não significa serviço pronto.
+
+Para banco de dados, é necessário validar:
+
+- container rodando
+- healthcheck saudável
+- pg_isready aceitando conexões
+- consulta SQL funcionando
+- backup testado

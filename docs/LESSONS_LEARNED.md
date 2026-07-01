@@ -127,3 +127,86 @@ Nem todo erro HTTP vem da aplicação que estamos configurando. Em ambientes com
 ##Frase da lição
 
 O serviço pode estar certo, mas a rede pode estar levando a requisição para outro lugar.
+
+---
+
+## Sprint v1.3.0 - Database
+
+### O que aprendemos
+
+- Como criar um serviço PostgreSQL em container.
+- Como usar Docker Compose para banco de dados.
+- Como proteger senha real fora do Git.
+- Como usar arquivo `.env` real no servidor.
+- Como criar volume persistente para dados.
+- Como gerar backup com `pg_dump`.
+- Como restaurar backup com `psql`.
+- Como validar banco com `pg_isready`.
+- Como diferenciar container rodando de serviço pronto.
+- Como corrigir permissões de volume em containers.
+- Como lidar com container órfão após mudança de Compose Project.
+- Como tratar rede Docker compartilhada entre módulos.
+- Como integrar um módulo real ao menu principal do LabOps.
+- Como centralizar a versão do projeto em um arquivo `VERSION`.
+
+### Lição - Container running não significa serviço pronto
+
+Durante os testes, o container PostgreSQL aparecia como ativo, mas ainda estava inicializando.
+
+O status mostrava:
+
+    health: starting
+
+E em alguns momentos o teste retornava:
+
+    rejecting connections
+
+Aprendizado:
+
+Um container pode estar rodando, mas a aplicação dentro dele ainda não estar pronta.
+
+Para bancos de dados, é importante validar com ferramentas próprias do serviço, como:
+
+    pg_isready
+
+### Lição - Volume de banco precisa de permissão correta
+
+O PostgreSQL apresentou erro ao acessar arquivos internos do volume:
+
+    FATAL: could not open file "base/16384/2601": Permission denied
+
+Aprendizado:
+
+Volumes persistentes usados por containers precisam ter permissões compatíveis com o usuário interno do serviço.
+
+No caso do PostgreSQL, o diretório de dados precisa pertencer ao usuário `postgres` dentro do container.
+
+### Lição - Compose Project muda o controle dos containers
+
+Ao mudar o nome do projeto Docker Compose, um container antigo ficou órfão.
+
+Erro observado:
+
+    container name "/labops-postgres" is already in use
+
+Aprendizado:
+
+O nome do projeto Compose faz parte do controle dos recursos criados.
+
+Mudar o project name pode exigir limpeza ou migração de containers antigos.
+
+### Lição - Rede Docker compartilhada precisa ser explícita
+
+O PostgreSQL usou a rede:
+
+    labops-network
+
+Como essa rede já era usada por outros módulos, o Compose precisou tratá-la como externa.
+
+Aprendizado:
+
+Redes compartilhadas entre módulos devem ser planejadas como recursos globais da plataforma.
+
+### Frase da sprint
+
+> Banco de dados não se valida apenas vendo o container em pé. Ele se valida conectando, consultando e fazendo backup.
