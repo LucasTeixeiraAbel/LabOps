@@ -50,11 +50,17 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 
 ## LabOps v1.2.0 - Gateway
 
-- [ ] Instalar Nginx
-- [ ] Criar reverse proxy
-- [ ] Configurar domínio local `srv.lab`
-- [ ] Configurar subdomínios locais
-- [ ] Criar página inicial do LabOps
+- [x] Criar módulo Nginx
+- [x] Criar Docker Compose do Gateway
+- [x] Criar página inicial web
+- [x] Criar configuração Nginx
+- [x] Rodar Gateway em container
+- [x] Resolver conflito com Traefik/Kubernetes
+- [x] Alterar porta externa para 8080
+- [x] Integrar Gateway ao menu principal
+- [x] Criar menu de logs e diagnóstico
+- [x] Validar acesso pelo navegador
+- [x] Documentar módulo Nginx
 
 ---
 

@@ -41,15 +41,7 @@ sudo rsync -av --delete "$PROJECT_DIR/www/" "$INSTALL_DIR/www/"
 
 echo "[4/6] Aplicando configuração..."
 
-sudo mkdir -p "$INSTALL_DIR/config"
 
-if [ ! -f "$INSTALL_DIR/config/labops.conf" ]; then
-    sudo rsync -av "$PROJECT_DIR/config/labops.conf" "$INSTALL_DIR/config/" 2>/dev/null || true
-else
-    echo "Configuração principal preservada: $INSTALL_DIR/config/labops.conf"
-fi
-
-sudo rsync -av --delete "$PROJECT_DIR/config/nginx/" "$INSTALL_DIR/config/nginx/" 2>/dev/null || true
 
 echo "[5/6] Ajustando permissões..."
 

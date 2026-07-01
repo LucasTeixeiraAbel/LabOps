@@ -9,6 +9,40 @@ O projeto segue versionamento semântico:
 - PATCH: correções
 ----------------------------------------------
 
+## [1.2.0] - Gateway
+
+### Adicionado
+
+- Módulo Nginx Gateway.
+- Docker Compose para execução do Nginx.
+- Página inicial web do LabOps.
+- Configuração Nginx em `config/nginx/conf.d/default.conf`.
+- Menu específico do módulo Gateway / Nginx.
+- Integração do Gateway ao menu principal.
+- Inicialização rápida no menu principal.
+- Área de logs e diagnóstico no menu principal.
+- Diagnóstico de portas 80 e 8080.
+
+### Melhorado
+
+- Menu principal expandido.
+- Separação entre módulos ativos e módulos futuros.
+- Acesso web inicial ao LabOps.
+- Diagnóstico operacional do ambiente.
+
+### Corrigido
+
+- Alteração da porta externa do Gateway de `80` para `8080` para evitar conflito com Traefik/Kubernetes.
+
+### Validado
+
+- Nginx rodando via Docker.
+- Página inicial acessível em `http://IP_DO_SERVIDOR:8080`.
+- Menu Gateway funcionando.
+- Logs do Nginx acessíveis pelo menu.
+- Testes `curl` com retorno `HTTP/1.1 200 OK`.
+
+------------------------------------
 ## [1.1.1] - Docker Polish
 
 ### Adicionado

@@ -12,8 +12,7 @@ Construir uma plataforma de laboratório que simule práticas reais de ambientes
 
 ## Versão atual
 
-=======
-`v1.1.1 - Docker Polish`
+`v1.2.0 - Gateway`
 
 ## Objetivos
 
