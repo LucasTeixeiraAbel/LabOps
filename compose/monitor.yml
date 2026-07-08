@@ -25,6 +25,8 @@ services:
       - "3000:3000"
     volumes:
       - /opt/labops/data/grafana:/var/lib/grafana
+      - /opt/labops/config/grafana/provisioning:/etc/grafana/provisioning:ro
+      - /opt/labops/config/grafana/dashboards:/var/lib/grafana/dashboards:ro
     networks:
       - labops-network
     depends_on:
