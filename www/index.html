@@ -2,82 +2,297 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>LabOps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabOps - DevOps Laboratory Platform</title>
+
     <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --panel-border: #233047;
+            --card: #020617;
+            --text: #dbeafe;
+            --muted: #94a3b8;
+            --blue: #38bdf8;
+            --green-bg: #064e3b;
+            --green-text: #86efac;
+            --yellow-bg: #422006;
+            --yellow-text: #fde68a;
+            --link-bg: #0f172a;
+            --link-border: #1e3a5f;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #e5e7eb;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            padding: 32px;
         }
 
-        .card {
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 16px;
-            padding: 40px;
-            width: 520px;
+        .container {
+            width: 100%;
+            max-width: 920px;
+            background: var(--panel);
+            border: 1px solid var(--panel-border);
+            border-radius: 22px;
+            padding: 56px 60px 42px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        .header {
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+            margin-bottom: 42px;
         }
 
-        h1 {
-            color: #38bdf8;
-            margin-bottom: 8px;
-            font-size: 44px;
+        .logo {
+            color: var(--blue);
+            font-size: 58px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin: 0;
         }
 
         .subtitle {
-            color: #94a3b8;
+            color: var(--muted);
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .status-main {
+            background: var(--green-bg);
+            color: var(--green-text);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            font-size: 19px;
+            font-weight: 700;
             margin-bottom: 32px;
         }
 
-        .status {
-            background: #022c22;
-            color: #86efac;
-            padding: 10px;
-            border-radius: 8px;
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 28px;
             margin-bottom: 24px;
         }
 
-        .info {
-            text-align: left;
-            background: #020617;
+        .card p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin: 8px 0;
+        }
+
+        .card strong {
+            color: var(--text);
+        }
+
+        .section-title {
+            color: var(--blue);
+            font-size: 22px;
+            margin: 0 0 18px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .service {
+            background: #07111f;
+            border: 1px solid #172554;
+            border-radius: 12px;
             padding: 16px;
-            border-radius: 10px;
-            color: #cbd5e1;
+        }
+
+        .service-name {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .service-status {
+            display: inline-block;
+            background: var(--green-bg);
+            color: var(--green-text);
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .service-planned {
+            display: inline-block;
+            background: var(--yellow-bg);
+            color: var(--yellow-text);
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .link-card {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--link-bg);
+            border: 1px solid var(--link-border);
+            border-radius: 12px;
+            padding: 18px;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--blue);
+        }
+
+        .link-title {
+            color: var(--blue);
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .link-url {
+            color: var(--muted);
+            font-size: 14px;
         }
 
         .footer {
-            margin-top: 24px;
             color: #64748b;
-            font-size: 13px;
+            text-align: center;
+            margin-top: 34px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 18px;
+            }
+
+            .container {
+                padding: 36px 24px 28px;
+            }
+
+            .logo {
+                font-size: 44px;
+            }
+
+            .subtitle {
+                font-size: 17px;
+            }
+
+            .services,
+            .links {
+                grid-template-columns: 1fr;
+            }
+
+            .card p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
-<body>
-    <div class="card">
-        <h1>LabOps</h1>
-        <div class="subtitle">DevOps Laboratory Platform</div>
 
-        <div class="status">
+<body>
+    <main class="container">
+        <header class="header">
+            <h1 class="logo">LabOps</h1>
+            <div class="subtitle">DevOps Laboratory Platform</div>
+        </header>
+
+        <div class="status-main">
             Gateway Nginx online
         </div>
 
-        <div class="info">
-            <p><strong>Release:</strong> v1.2.0 - Gateway</p>
+        <section class="card">
+            <p><strong>Release:</strong> v1.4.0 - Observability</p>
             <p><strong>Servidor:</strong> srv.lab</p>
-            <p><strong>Função:</strong> Reverse Proxy e página inicial</p>
-            <p><strong>Status:</strong> Em desenvolvimento</p>
-        </div>
+            <p><strong>Função:</strong> Portal, Reverse Proxy e Observability Gateway</p>
+            <p><strong>Status:</strong> Release estável</p>
+        </section>
 
-        <div class="footer">
+        <section class="card">
+            <h2 class="section-title">Serviços</h2>
+
+            <div class="services">
+                <div class="service">
+                    <div class="service-name">Gateway / Nginx</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">PostgreSQL</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">Prometheus</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">Grafana</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">Node Exporter</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">IA Local / Assistant</div>
+                    <span class="service-planned">planejado</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="section-title">Acessos rápidos</h2>
+
+            <div class="links">
+                <a class="link-card" href="http://localhost:3000">
+                    <div class="link-title">Grafana</div>
+                    <div class="link-url">http://localhost:3000</div>
+                </a>
+
+                <a class="link-card" href="http://localhost:9091">
+                    <div class="link-title">Prometheus</div>
+                    <div class="link-url">http://localhost:9091</div>
+                </a>
+
+                <a class="link-card" href="http://localhost:9100/metrics">
+                    <div class="link-title">Node Exporter</div>
+                    <div class="link-url">http://localhost:9100/metrics</div>
+                </a>
+
+                <a class="link-card" href="http://localhost:8080">
+                    <div class="link-title">Portal LabOps</div>
+                    <div class="link-url">http://localhost:8080</div>
+                </a>
+            </div>
+        </section>
+
+        <footer class="footer">
             Build. Automate. Learn.
-        </div>
-    </div>
+        </footer>
+    </main>
 </body>
 </html>
