@@ -20,6 +20,7 @@
 - Prometheus passou a usar a porta 9091 no host.
 - A porta 9090 foi evitada para nao conflitar com Cockpit.
 - Menu principal passou a tratar Monitoramento como modulo ativo.
+- Portal Web do LabOps atualizado para v1.4.0 - Observability.
 
 ### Validado
 
