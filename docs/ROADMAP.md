@@ -119,3 +119,50 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 - [x] Centralizar versão no arquivo VERSION
 - [x] Corrigir banner dinâmico
 - [x] Documentar módulo PostgreSQL
+
+## v1.4.0 - Observability
+
+Status: em desenvolvimento.
+
+Objetivo principal:
+
+Adicionar uma camada inicial de observability ao LabOps, permitindo acompanhar metricas do servidor, visualizar dados no Grafana e criar uma base para monitoramento mais avancado.
+
+Escopo inicial:
+
+- Prometheus para coleta de metricas.
+- Grafana para visualizacao.
+- Node Exporter para metricas do sistema operacional.
+- Dashboard inicial LabOps Overview.
+- Provisionamento automatico do Grafana.
+- Data source Prometheus configurado automaticamente.
+- Integracao do modulo Monitoramento ao menu principal.
+- Opcoes de login e reset de senha do Grafana pelo menu.
+
+Servicos previstos:
+
+- labops-prometheus
+- labops-grafana
+- labops-node-exporter
+
+Portas utilizadas:
+
+- Gateway LabOps: 8080
+- Grafana: 3000
+- Prometheus: 9091
+- Node Exporter: 9100
+
+Observacao:
+
+A porta 9090 foi evitada no host por possivel conflito com Cockpit. O Prometheus usa 9091 no host e 9090 dentro do container.
+
+Proximas melhorias possiveis:
+
+- Dashboard mais completo para CPU, memoria, disco e rede.
+- Monitoramento dos containers Docker.
+- Alertas no Prometheus Alertmanager.
+- Exporter para PostgreSQL.
+- Exporter para Nginx.
+- Documentacao de troubleshooting do monitoramento.
+- Preparacao para backup em nuvem em sprint futura.
+

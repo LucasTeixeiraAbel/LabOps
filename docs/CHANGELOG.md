@@ -1,3 +1,35 @@
+# Changelog
+
+## v1.4.0-dev - Observability
+
+### Adicionado
+
+- Modulo inicial de Monitoramento.
+- Stack com Prometheus, Grafana e Node Exporter.
+- Arquivo compose dedicado em compose/monitor.yml.
+- Configuracao inicial do Prometheus em config/prometheus/prometheus.yml.
+- Provisionamento automatico do Grafana com data source Prometheus.
+- Dashboard inicial LabOps Overview.
+- Integracao do modulo Monitoramento ao menu principal do LabOps.
+- Menu do modulo Monitoramento com opcoes de status, instalar, iniciar, parar e atualizar.
+- Opcao para visualizar informacoes de login do Grafana.
+- Opcao para resetar senha do Grafana pelo menu.
+
+### Alterado
+
+- Prometheus passou a usar a porta 9091 no host.
+- A porta 9090 foi evitada para nao conflitar com Cockpit.
+- Menu principal passou a tratar Monitoramento como modulo ativo.
+
+### Validado
+
+- Prometheus respondendo em http://localhost:9091.
+- Grafana respondendo em http://localhost:3000.
+- Node Exporter respondendo em http://localhost:9100/metrics.
+- PostgreSQL permanece healthy.
+- Nginx Gateway permanece ativo em http://localhost:8080.
+
+
 ## [1.3.0] - Database
 
 ### Adicionado
