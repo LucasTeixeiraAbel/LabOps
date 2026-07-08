@@ -189,6 +189,9 @@ monitor_show_urls() {
     echo -e "${COLOR_CYAN}Node Exporter:${COLOR_RESET}"
     echo "  http://localhost:9100/metrics"
     echo
+    echo -e "${COLOR_CYAN}cAdvisor:${COLOR_RESET}"
+    echo "  http://localhost:8081"
+    echo
     echo -e "${COLOR_CYAN}Gateway LabOps:${COLOR_RESET}"
     echo "  http://localhost:8080"
     echo
