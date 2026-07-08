@@ -12,7 +12,7 @@ Build. Automate. Learn.
 
 ## Versao atual
 
-v1.4.0-dev - Observability
+v1.4.0 - Observability
 
 ## Objetivos
 
@@ -195,8 +195,8 @@ Concluido:
 Em andamento:
 
 - Evolucao dos dashboards.
-- Documentacao da versao v1.4.0.
-- Fechamento da release v1.4.0 - Observability.
+- Documentacao da versao v1.4.0 concluida.
+- Release v1.4.0 - Observability concluida.
 
 Planejado:
 

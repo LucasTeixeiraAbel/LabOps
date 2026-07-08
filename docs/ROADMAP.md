@@ -122,7 +122,7 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 
 ## v1.4.0 - Observability
 
-Status: em desenvolvimento.
+Status: concluido.
 
 Objetivo principal:
 

@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.4.0-dev - Observability
+## v1.4.0 - Observability
 
 ### Adicionado
 
