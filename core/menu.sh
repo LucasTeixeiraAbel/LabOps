@@ -146,6 +146,19 @@ open_postgres_menu() {
     fi
 }
 
+
+open_monitor_menu() {
+    if [ -f "$LABOPS_HOME/modules/monitor/menu.sh" ]; then
+        log_info "Abrindo módulo Monitoramento."
+        source "$LABOPS_HOME/modules/monitor/menu.sh"
+        monitor_menu
+    else
+        echo
+        echo -e "${COLOR_RED}Módulo Monitoramento não encontrado.${COLOR_RESET}"
+        pause_screen
+    fi
+}
+
 quick_start_menu() {
     while true; do
         clear
@@ -364,7 +377,7 @@ show_menu() {
         echo -e "${COLOR_BLUE}[ 6 ]${COLOR_RESET} Logs e diagnóstico"
         echo
         echo -e "${COLOR_GREEN}[ 7 ]${COLOR_RESET} Banco de Dados / PostgreSQL"
-        echo -e "${COLOR_YELLOW}[ 8 ]${COLOR_RESET} Monitoramento"
+        echo -e "${COLOR_GREEN}[ 8 ]${COLOR_RESET} Monitoramento"
         echo -e "${COLOR_YELLOW}[ 9 ]${COLOR_RESET} IA Offline"
         echo
         echo -e "${COLOR_RED}[ 0 ]${COLOR_RESET} Sair"
@@ -403,8 +416,7 @@ show_menu() {
                 open_postgres_menu
                 ;;
             8)
-                log_warn "Módulo Monitoramento ainda não implementado."
-                show_future_module_message "Monitoramento"
+                open_monitor_menu
                 ;;
             9)
                 log_warn "Módulo IA Offline ainda não implementado."
