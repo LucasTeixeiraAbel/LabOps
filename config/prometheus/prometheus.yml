@@ -12,3 +12,8 @@ scrape_configs:
     static_configs:
       - targets:
           - "labops-node-exporter:9100"
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets:
+          - "labops-cadvisor:8080"
