@@ -7,6 +7,7 @@ services:
       - "9091:9090"
     volumes:
       - /opt/labops/config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /opt/labops/config/prometheus/rules:/etc/prometheus/rules:ro
       - /opt/labops/data/prometheus:/prometheus
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"

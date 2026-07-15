@@ -1,0 +1,47 @@
+groups:
+  - name: labops-alerts
+    rules:
+      - alert: LabOpsTargetDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Target indisponivel: {{ $labels.job }}"
+          description: "O alvo {{ $labels.job }} em {{ $labels.instance }} esta indisponivel ha mais de 1 minuto."
+
+      - alert: LabOpsHighCpuUsage
+        expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU alta no servidor"
+          description: "Uso de CPU acima de 85% por mais de 5 minutos."
+
+      - alert: LabOpsHighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Memoria alta no servidor"
+          description: "Uso de memoria acima de 85% por mais de 5 minutos."
+
+      - alert: LabOpsLowDiskSpace
+        expr: (node_filesystem_avail_bytes{mountpoint="/",fstype!~"tmpfs|overlay"} / node_filesystem_size_bytes{mountpoint="/",fstype!~"tmpfs|overlay"}) * 100 < 15
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Pouco espaco em disco"
+          description: "Particao raiz com menos de 15% de espaco livre."
+
+      - alert: LabOpsContainerHighCpuUsage
+        expr: sum by (name) (rate(container_cpu_usage_seconds_total{image!="",name!=""}[5m])) * 100 > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "CPU alta em container"
+          description: "Container {{ $labels.name }} com uso alto de CPU por mais de 5 minutos."
