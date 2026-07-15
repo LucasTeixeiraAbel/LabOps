@@ -143,3 +143,53 @@ Resultado esperado:
 - O Prometheus usa a porta 9091 no host para evitar conflito com Cockpit.
 - O dashboard inicial e simples e serve como base para evolucoes futuras.
 - O menu principal do LabOps ja possui integracao direta com o modulo Monitoramento.
+
+---
+
+## Container Monitoring
+
+Na versao v1.5.0-dev, o modulo Monitoramento passou a incluir cAdvisor.
+
+O cAdvisor e responsavel por coletar metricas dos containers Docker em execucao.
+
+Servico:
+
+    labops-cadvisor
+
+Porta:
+
+    Host: 8081
+    Container: 8080
+
+Acesso:
+
+    http://localhost:8081
+    http://localhost:8081/metrics
+
+Prometheus scrape job:
+
+    cadvisor -> labops-cadvisor:8080
+
+Fluxo:
+
+    cAdvisor coleta metricas dos containers.
+    Prometheus coleta essas metricas.
+    Grafana exibe o dashboard LabOps Containers.
+
+Dashboard:
+
+    Dashboards
+    -> LabOps
+    -> LabOps Containers
+
+Metricas iniciais usadas:
+
+    container_cpu_usage_seconds_total
+    container_memory_usage_bytes
+    container_network_receive_bytes_total
+    container_last_seen
+    up{job="cadvisor"}
+
+Observacao:
+
+O endpoint /metrics do cAdvisor mostra dados tecnicos em texto. Ele nao e uma tela visual para uso diario. A visualizacao principal deve ser feita pelo Grafana.

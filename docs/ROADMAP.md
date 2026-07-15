@@ -78,7 +78,7 @@ Criar a fundação do LabOps: estrutura, CLI, Core Engine, menu, logs, runtime e
 - [ ] Subir Grafana
 - [ ] Subir Prometheus
 - [ ] Subir Node Exporter
-- [ ] Subir cAdvisor
+- [x] Subir cAdvisor
 - [ ] Criar dashboards
 
 ---
@@ -165,4 +165,44 @@ Proximas melhorias possiveis:
 - Exporter para Nginx.
 - Documentacao de troubleshooting do monitoramento.
 - Preparacao para backup em nuvem em sprint futura.
+
+## v1.5.0 - Container Monitoring
+
+Status: em desenvolvimento.
+
+Objetivo principal:
+
+Expandir a observability do LabOps para monitorar containers Docker individualmente, usando cAdvisor como fonte de metricas para o Prometheus e dashboards dedicados no Grafana.
+
+Escopo inicial:
+
+- Adicionar cAdvisor na stack de monitoramento.
+- Expor cAdvisor na porta 8081.
+- Configurar Prometheus para coletar metricas do cAdvisor.
+- Integrar cAdvisor ao menu e status do modulo Monitoramento.
+- Criar dashboard LabOps Containers no Grafana.
+- Documentar o fluxo de metricas de containers.
+
+Servicos envolvidos:
+
+- labops-cadvisor
+- labops-prometheus
+- labops-grafana
+- labops-node-exporter
+
+Portas utilizadas:
+
+- cAdvisor: 8081
+- Prometheus: 9091
+- Grafana: 3000
+- Node Exporter: 9100
+
+Proximas melhorias possiveis:
+
+- Painel mais detalhado por container.
+- Alertas para container parado.
+- Alertas de consumo alto de CPU e memoria.
+- Integracao do status real dos containers no portal Web.
+- Exporter dedicado para PostgreSQL.
+- Exporter dedicado para Nginx.
 

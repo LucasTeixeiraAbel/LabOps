@@ -12,7 +12,7 @@ Build. Automate. Learn.
 
 ## Versao atual
 
-v1.4.0 - Observability
+v1.5.0-dev - Container Monitoring
 
 ## Objetivos
 
@@ -53,6 +53,7 @@ Em ambiente VirtualBox NAT com redirecionamento de portas:
     Grafana:        http://localhost:3000
     Prometheus:     http://localhost:9091
     Node Exporter:  http://localhost:9100/metrics
+    cAdvisor:      http://localhost:8081
     SSH:            ssh -p 2222 srvlucas@localhost
 
 Dentro da VM:
@@ -61,6 +62,7 @@ Dentro da VM:
     Grafana:        http://localhost:3000
     Prometheus:     http://localhost:9091
     Node Exporter:  http://localhost:9100/metrics
+    cAdvisor:      http://localhost:8081
 
 ## Docker
 
@@ -159,6 +161,36 @@ Documentacao do modulo:
 
     docs/modules/MONITOR.md
 
+
+## Container Monitoring
+
+A partir da versao v1.5.0-dev, o LabOps inclui monitoramento de containers com cAdvisor.
+
+O cAdvisor coleta metricas dos containers Docker, como:
+
+- Uso de CPU por container.
+- Uso de memoria por container.
+- Metricas de rede.
+- Containers monitorados.
+- Estado de coleta para o Prometheus.
+
+Fluxo de monitoramento:
+
+    Node Exporter  -> metricas da VM/servidor
+    cAdvisor       -> metricas dos containers
+    Prometheus     -> coleta e armazena as metricas
+    Grafana        -> exibe dashboards
+
+Acesso local:
+
+    cAdvisor: http://localhost:8081
+
+Dashboard no Grafana:
+
+    Dashboards
+    -> LabOps
+    -> LabOps Containers
+
 ## Comando principal
 
 Depois de instalado em /opt/labops, o LabOps pode ser iniciado com:
@@ -196,7 +228,7 @@ Em andamento:
 
 - Evolucao dos dashboards.
 - Documentacao da versao v1.4.0 concluida.
-- Release v1.4.0 - Observability concluida.
+- Evolucao da release v1.5.0-dev - Container Monitoring em andamento.
 
 Planejado:
 

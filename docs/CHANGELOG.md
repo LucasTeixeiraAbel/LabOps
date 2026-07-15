@@ -1,5 +1,31 @@
 # Changelog
 
+## v1.5.0-dev - Container Monitoring
+
+### Adicionado
+
+- cAdvisor para coleta de metricas dos containers Docker.
+- Scrape job cadvisor no Prometheus.
+- Porta 8081 para acesso ao cAdvisor.
+- Integracao do cAdvisor ao status do modulo Monitoramento.
+- Link do cAdvisor no menu de URLs do modulo Monitoramento.
+- Dashboard LabOps Containers no Grafana.
+- Paineis iniciais para CPU, memoria, rede e quantidade de containers monitorados.
+
+### Alterado
+
+- Stack de monitoramento expandida para incluir metricas de containers.
+- VERSION atualizado para v1.5.0-dev - Container Monitoring.
+
+### Validado
+
+- Container labops-cadvisor rodando.
+- Endpoint http://localhost:8081/metrics respondendo.
+- Prometheus coletando o job cadvisor.
+- Grafana estavel apos ajuste do datasource.
+- Dashboard LabOps Containers carregando no Grafana.
+
+
 ## v1.4.0 - Observability
 
 ### Adicionado
