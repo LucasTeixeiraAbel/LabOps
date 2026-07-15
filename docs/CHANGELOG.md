@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.5.0-dev - Container Monitoring
+## v1.5.0 - Container Monitoring
 
 ### Adicionado
 
@@ -15,7 +15,7 @@
 ### Alterado
 
 - Stack de monitoramento expandida para incluir metricas de containers.
-- VERSION atualizado para v1.5.0-dev - Container Monitoring.
+- VERSION atualizado para v1.5.0 - Container Monitoring.
 
 ### Validado
 

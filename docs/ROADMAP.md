@@ -168,7 +168,7 @@ Proximas melhorias possiveis:
 
 ## v1.5.0 - Container Monitoring
 
-Status: em desenvolvimento.
+Status: concluido.
 
 Objetivo principal:
 

@@ -12,7 +12,7 @@ Build. Automate. Learn.
 
 ## Versao atual
 
-v1.5.0-dev - Container Monitoring
+v1.5.0 - Container Monitoring
 
 ## Objetivos
 
@@ -228,7 +228,7 @@ Em andamento:
 
 - Evolucao dos dashboards.
 - Documentacao da versao v1.4.0 concluida.
-- Evolucao da release v1.5.0-dev - Container Monitoring em andamento.
+- Evolucao da release v1.5.0 - Container Monitoring em andamento.
 
 Planejado:
 
