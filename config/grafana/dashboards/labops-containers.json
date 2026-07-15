@@ -136,7 +136,7 @@
     {
       "id": 4,
       "type": "stat",
-      "title": "cAdvisor target",
+      "title": "cAdvisor status",
       "datasource": "LabOps Prometheus",
       "gridPos": {
         "h": 5,
@@ -159,10 +159,10 @@
               "type": "value",
               "options": {
                 "0": {
-                  "text": "DOWN"
+                  "text": "OFFLINE"
                 },
                 "1": {
-                  "text": "UP"
+                  "text": "ONLINE"
                 }
               }
             }
