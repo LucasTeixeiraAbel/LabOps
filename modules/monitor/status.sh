@@ -50,3 +50,41 @@ if curl -fsS http://localhost:9091/api/v1/targets \
 else
     echo "cAdvisor target: verificar no Prometheus"
 fi
+
+echo
+echo "Alertas Prometheus:"
+echo
+
+alerts_tmp="/tmp/labops-prometheus-alerts.json"
+
+if curl -fsS http://localhost:9091/api/v1/alerts -o "$alerts_tmp" >/dev/null 2>&1; then
+    python3 - "$alerts_tmp" <<'PYALERTS'
+import json
+import sys
+
+path = sys.argv[1]
+
+with open(path, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+alerts = data.get("data", {}).get("alerts", [])
+
+if not alerts:
+    print("Alertas ativos: 0")
+else:
+    print(f"Alertas ativos: {len(alerts)}")
+    for alert in alerts:
+        labels = alert.get("labels", {})
+        annotations = alert.get("annotations", {})
+        name = labels.get("alertname", "sem_nome")
+        severity = labels.get("severity", "sem_severidade")
+        state = alert.get("state", "unknown")
+        summary = annotations.get("summary", "")
+
+        print(f"- {name} [{severity}] [{state}] {summary}")
+PYALERTS
+    rm -f "$alerts_tmp"
+else
+    echo "Não foi possível consultar alertas no Prometheus."
+fi
+
