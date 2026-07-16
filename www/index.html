@@ -222,10 +222,10 @@
         </div>
 
         <section class="card">
-            <p><strong>Release:</strong> v1.5.0 - Container Monitoring</p>
+            <p><strong>Release:</strong> v1.6.0-dev - Alerts</p>
             <p><strong>Servidor:</strong> srv.lab</p>
-            <p><strong>Função:</strong> Portal, Reverse Proxy e Container Monitoring Gateway</p>
-            <p><strong>Status:</strong> Release estável</p>
+            <p><strong>Função:</strong> Portal, Reverse Proxy e Alerts and Monitoring Gateway</p>
+            <p><strong>Status:</strong> Versão em desenvolvimento</p>
         </section>
 
         <section class="card">
@@ -244,6 +244,11 @@
 
                 <div class="service">
                     <div class="service-name">Prometheus</div>
+                    <span class="service-status">online</span>
+                </div>
+
+                <div class="service">
+                    <div class="service-name">Prometheus Alerts</div>
                     <span class="service-status">online</span>
                 </div>
 
@@ -281,6 +286,11 @@
                 <a class="link-card" href="http://localhost:9091">
                     <div class="link-title">Prometheus</div>
                     <div class="link-url">http://localhost:9091</div>
+                </a>
+
+                <a class="link-card" href="http://localhost:9091/alerts">
+                    <div class="link-title">Prometheus Alerts</div>
+                    <div class="link-url">http://localhost:9091/alerts</div>
                 </a>
 
                 <a class="link-card" href="http://localhost:9100/metrics">

@@ -1,5 +1,41 @@
 # Changelog
 
+## v1.6.0-dev - Alerts
+
+### Adicionado
+
+- Regras iniciais de alertas no Prometheus.
+- Arquivo config/prometheus/rules/labops-alerts.yml.
+- Volume de regras do Prometheus em compose/monitor.yml.
+- rule_files no prometheus.yml.
+- Tela de alertas integrada ao menu do modulo Monitoramento.
+- Consulta de alertas ativos no status do modulo Monitoramento.
+- URL http://localhost:9091/alerts adicionada ao fluxo de uso.
+- Documentacao inicial dos alertas.
+
+### Regras iniciais
+
+- LabOpsTargetDown.
+- LabOpsHighCpuUsage.
+- LabOpsHighMemoryUsage.
+- LabOpsLowDiskSpace.
+- LabOpsContainerHighCpuUsage.
+
+### Validado
+
+- promtool check config executado com sucesso.
+- promtool check rules executado com sucesso.
+- Prometheus carregando as regras em /alerts.
+- Alertas exibidos como inativos quando nao ha problemas.
+- Menu LabOps exibindo a tela de alertas.
+
+### Observacao
+
+- Esta versao cria a base de alertas no Prometheus.
+- Notificacoes externas ainda nao foram implementadas.
+- Alertmanager fica reservado para uma evolucao futura.
+
+
 ## v1.5.0 - Container Monitoring
 
 ### Adicionado

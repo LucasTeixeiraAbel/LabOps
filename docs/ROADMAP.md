@@ -206,3 +206,47 @@ Proximas melhorias possiveis:
 - Exporter dedicado para PostgreSQL.
 - Exporter dedicado para Nginx.
 
+## v1.6.0 - Alerts
+
+Status: em desenvolvimento.
+
+Objetivo principal:
+
+Adicionar uma base inicial de alertas ao LabOps usando Prometheus Rules, permitindo identificar problemas de disponibilidade, CPU, memoria, disco e containers diretamente pela interface do Prometheus e pelo menu do LabOps.
+
+Escopo inicial:
+
+- Criar arquivo de regras em config/prometheus/rules/labops-alerts.yml.
+- Montar a pasta de regras no container Prometheus.
+- Ativar rule_files no prometheus.yml.
+- Validar regras com promtool.
+- Exibir alertas em http://localhost:9091/alerts.
+- Integrar consulta de alertas no status do modulo Monitoramento.
+- Adicionar opcao Alertas do Prometheus no menu do modulo Monitoramento.
+- Documentar funcionamento e validacao dos alertas.
+
+Regras previstas:
+
+- Target indisponivel.
+- CPU alta no servidor.
+- Memoria alta no servidor.
+- Pouco espaco em disco.
+- CPU alta em container.
+
+Fora do escopo inicial:
+
+- Envio de notificacoes externas.
+- Alertmanager.
+- Integracao com e-mail, Telegram ou Discord.
+- Silenciamento avancado de alertas.
+- Rotas de notificacao por severidade.
+
+Proximas melhorias possiveis:
+
+- Adicionar Alertmanager.
+- Criar dashboard de alertas no Grafana.
+- Criar alertas para PostgreSQL.
+- Criar alertas para Nginx.
+- Criar alertas para containers parados.
+- Exibir resumo de alertas no portal Web.
+

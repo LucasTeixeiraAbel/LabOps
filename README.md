@@ -12,7 +12,7 @@ Build. Automate. Learn.
 
 ## Versao atual
 
-v1.5.0 - Container Monitoring
+v1.6.0-dev - Alerts
 
 ## Objetivos
 
@@ -52,6 +52,7 @@ Em ambiente VirtualBox NAT com redirecionamento de portas:
     Gateway LabOps: http://localhost:8080
     Grafana:        http://localhost:3000
     Prometheus:     http://localhost:9091
+    Prometheus Alerts: http://localhost:9091/alerts
     Node Exporter:  http://localhost:9100/metrics
     cAdvisor:      http://localhost:8081
     SSH:            ssh -p 2222 srvlucas@localhost
@@ -61,6 +62,7 @@ Dentro da VM:
     Gateway LabOps: http://localhost:8080
     Grafana:        http://localhost:3000
     Prometheus:     http://localhost:9091
+    Prometheus Alerts: http://localhost:9091/alerts
     Node Exporter:  http://localhost:9100/metrics
     cAdvisor:      http://localhost:8081
 
@@ -191,6 +193,38 @@ Dashboard no Grafana:
     -> LabOps
     -> LabOps Containers
 
+
+## Alerts
+
+A partir da versao v1.6.0-dev, o LabOps inclui uma base inicial de alertas no Prometheus.
+
+Os alertas sao avaliados diretamente pelo Prometheus e podem ser consultados em:
+
+    http://localhost:9091/alerts
+
+Tambem podem ser acessados pelo menu principal:
+
+    labops
+    -> [ 8 ] Monitoramento
+    -> [ 9 ] Alertas do Prometheus
+
+Regras iniciais:
+
+- Target indisponivel.
+- Uso alto de CPU no servidor.
+- Uso alto de memoria no servidor.
+- Pouco espaco em disco.
+- Uso alto de CPU em container.
+
+Validacao tecnica:
+
+    docker exec labops-prometheus promtool check config /etc/prometheus/prometheus.yml
+    docker exec labops-prometheus promtool check rules /etc/prometheus/rules/labops-alerts.yml
+
+Observacao:
+
+Nesta etapa, os alertas aparecem no Prometheus, mas ainda nao enviam notificacoes externas. Envio para e-mail, Telegram, Discord ou outros canais deve ser tratado em uma versao futura com Alertmanager.
+
 ## Comando principal
 
 Depois de instalado em /opt/labops, o LabOps pode ser iniciado com:
@@ -228,7 +262,7 @@ Em andamento:
 
 - Evolucao dos dashboards.
 - Documentacao da versao v1.4.0 concluida.
-- Evolucao da release v1.5.0 - Container Monitoring em andamento.
+- Evolucao da release v1.6.0-dev - Alerts em andamento.
 
 Planejado:
 
