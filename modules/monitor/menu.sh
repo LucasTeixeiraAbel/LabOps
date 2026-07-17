@@ -199,6 +199,63 @@ monitor_show_urls() {
     pause_screen
 }
 
+
+monitor_show_alerts() {
+    clear
+    show_banner 2>/dev/null || true
+    print_header "ALERTAS DO PROMETHEUS"
+
+    echo -e "${COLOR_CYAN}Interface Web:${COLOR_RESET}"
+    echo "  http://localhost:9091/alerts"
+    echo
+
+    local alerts_tmp="/tmp/labops-prometheus-alerts.json"
+
+    if ! curl -fsS http://localhost:9091/api/v1/alerts -o "$alerts_tmp" >/dev/null 2>&1; then
+        echo -e "${COLOR_RED}Não foi possível consultar os alertas no Prometheus.${COLOR_RESET}"
+        pause_screen
+        return
+    fi
+
+    python3 - "$alerts_tmp" <<'PYALERTS'
+import json
+import sys
+
+path = sys.argv[1]
+
+with open(path, "r", encoding="utf-8") as f:
+    data = json.load(f)
+
+alerts = data.get("data", {}).get("alerts", [])
+
+if not alerts:
+    print("Nenhum alerta ativo no momento.")
+    print()
+    print("Isso significa que as regras estão carregadas, mas nada está em estado de problema.")
+else:
+    print(f"Alertas ativos: {len(alerts)}")
+    print()
+
+    for alert in alerts:
+        labels = alert.get("labels", {})
+        annotations = alert.get("annotations", {})
+
+        print("----------------------------------------")
+        print(f"Alerta....: {labels.get('alertname', 'sem_nome')}")
+        print(f"Severidade: {labels.get('severity', 'sem_severidade')}")
+        print(f"Estado....: {alert.get('state', 'unknown')}")
+        print(f"Resumo....: {annotations.get('summary', '')}")
+        print(f"Descrição.: {annotations.get('description', '')}")
+        print(f"Início....: {alert.get('activeAt', '')}")
+PYALERTS
+
+    rm -f "$alerts_tmp"
+
+    echo
+    pause_screen
+}
+
+
 monitor_menu() {
     while true; do
         clear
@@ -215,6 +272,7 @@ monitor_menu() {
         echo -e "${COLOR_BLUE}[ 6 ]${COLOR_RESET} Informações de login do Grafana"
         echo -e "${COLOR_YELLOW}[ 7 ]${COLOR_RESET} Resetar senha do Grafana"
         echo -e "${COLOR_BLUE}[ 8 ]${COLOR_RESET} Mostrar URLs de acesso"
+        echo -e "${COLOR_YELLOW}[ 9 ]${COLOR_RESET} Alertas do Prometheus"
         echo
         echo -e "${COLOR_RED}[ 0 ]${COLOR_RESET} Voltar"
         echo
@@ -258,6 +316,9 @@ monitor_menu() {
                 ;;
             8)
                 monitor_show_urls
+                ;;
+            9)
+                monitor_show_alerts
                 ;;
             0)
                 return
