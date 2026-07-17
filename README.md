@@ -8,7 +8,7 @@ Construir uma plataforma de laboratorio que simule praticas reais de ambientes c
 
 ## Slogan
 
-Build. Automate. Learn.
+Build. Automate. Test.
 
 ## Versao atual
 
