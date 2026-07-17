@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.6.0-dev - Alerts
+## v1.6.0 - Alerts
 
 ### Adicionado
 

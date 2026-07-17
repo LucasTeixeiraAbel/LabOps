@@ -208,7 +208,7 @@ Proximas melhorias possiveis:
 
 ## v1.6.0 - Alerts
 
-Status: em desenvolvimento.
+Status: concluida.
 
 Objetivo principal:
 

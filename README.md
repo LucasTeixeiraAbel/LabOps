@@ -12,7 +12,7 @@ Build. Automate. Test.
 
 ## Versao atual
 
-v1.6.0-dev - Alerts
+v1.6.0 - Alerts
 
 ## Objetivos
 
@@ -205,7 +205,7 @@ Esse arquivo documenta mudancas importantes de ambiente, validacoes, upgrades e 
 
 ## Alerts
 
-A partir da versao v1.6.0-dev, o LabOps inclui uma base inicial de alertas no Prometheus.
+A partir da versao v1.6.0, o LabOps inclui uma base inicial de alertas no Prometheus.
 
 Os alertas sao avaliados diretamente pelo Prometheus e podem ser consultados em:
 
@@ -271,7 +271,7 @@ Em andamento:
 
 - Evolucao dos dashboards.
 - Documentacao da versao v1.4.0 concluida.
-- Evolucao da release v1.6.0-dev - Alerts em andamento.
+- Evolucao da release v1.6.0 - Alerts em andamento.
 
 Planejado:
 

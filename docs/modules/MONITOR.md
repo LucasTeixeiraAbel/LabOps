@@ -198,7 +198,7 @@ O endpoint /metrics do cAdvisor mostra dados tecnicos em texto. Ele nao e uma te
 
 ## Alertas Prometheus
 
-Na versao v1.6.0-dev, o modulo Monitoramento passou a incluir uma base inicial de alertas usando Prometheus Rules.
+Na versao v1.6.0, o modulo Monitoramento passou a incluir uma base inicial de alertas usando Prometheus Rules.
 
 Arquivo de regras:
 

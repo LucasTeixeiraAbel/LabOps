@@ -4,7 +4,7 @@
 
 O modulo de alertas do LabOps usa Prometheus Rules para detectar situacoes importantes no ambiente.
 
-Na versao v1.6.0-dev, os alertas aparecem no Prometheus e no menu do LabOps.
+Na versao v1.6.0, os alertas aparecem no Prometheus e no menu do LabOps.
 
 Interface principal:
 
