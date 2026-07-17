@@ -193,3 +193,51 @@ Metricas iniciais usadas:
 Observacao:
 
 O endpoint /metrics do cAdvisor mostra dados tecnicos em texto. Ele nao e uma tela visual para uso diario. A visualizacao principal deve ser feita pelo Grafana.
+
+---
+
+## Alertas Prometheus
+
+Na versao v1.6.0, o modulo Monitoramento passou a incluir uma base inicial de alertas usando Prometheus Rules.
+
+Arquivo de regras:
+
+    config/prometheus/rules/labops-alerts.yml
+
+Arquivo ativo na instalacao:
+
+    /opt/labops/config/prometheus/rules/labops-alerts.yml
+
+Interface Web:
+
+    http://localhost:9091/alerts
+
+Acesso pelo menu:
+
+    labops
+    -> [ 8 ] Monitoramento
+    -> [ 9 ] Alertas do Prometheus
+
+Validacao com promtool:
+
+    docker exec labops-prometheus promtool check config /etc/prometheus/prometheus.yml
+    docker exec labops-prometheus promtool check rules /etc/prometheus/rules/labops-alerts.yml
+
+Regras iniciais:
+
+    LabOpsTargetDown
+    LabOpsHighCpuUsage
+    LabOpsHighMemoryUsage
+    LabOpsLowDiskSpace
+    LabOpsContainerHighCpuUsage
+
+Estados esperados:
+
+    inactive = regra carregada e sem problema ativo
+    pending  = condicao detectada, aguardando tempo do for
+    firing   = alerta disparado
+
+Observacao:
+
+Nesta etapa, os alertas ficam visiveis no Prometheus e no menu do LabOps. Notificacoes externas ainda nao fazem parte do escopo.
+
