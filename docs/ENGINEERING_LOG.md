@@ -261,3 +261,70 @@ Para banco de dados, é necessário validar:
 - pg_isready aceitando conexões
 - consulta SQL funcionando
 - backup testado
+
+## 2026-07-16 - Upgrade para Ubuntu 26.04 LTS
+
+### Contexto
+
+O servidor LabOps foi atualizado para Ubuntu 26.04 LTS e validado após o upgrade do sistema operacional.
+
+### Ambiente validado
+
+- Sistema operacional: Ubuntu 26.04 LTS
+- Kernel: 7.0.0-28-generic
+- Docker Engine: 29.6.2
+- Docker Compose: v5.3.1
+- Serviço Docker: active/enabled
+- Branch do projeto: feature/alerts
+- Versão do LabOps: v1.6.0-dev - Alerts
+
+### Serviços validados
+
+- Nginx Gateway
+- PostgreSQL
+- Prometheus
+- Grafana
+- Node Exporter
+- cAdvisor
+
+### Validações executadas
+
+- Verificação de versão do sistema operacional.
+- Verificação de versão do kernel.
+- Verificação de versão do Docker e Docker Compose.
+- Verificação do serviço Docker.
+- Recriação da stack de monitoramento.
+- Validação da porta 9091 do Prometheus.
+- Validação de readiness do Prometheus.
+- Validação de saúde do Grafana.
+- Validação dos targets do Prometheus.
+- Validação das métricas do cAdvisor.
+- Alinhamento entre o projeto local e /opt/labops.
+
+### Resultado
+
+O LabOps permaneceu operacional após o upgrade para Ubuntu 26.04 LTS.
+
+Os targets do Prometheus ficaram UP:
+
+- cadvisor
+- node-exporter
+- prometheus
+
+O portal Web foi validado exibindo:
+
+- v1.6.0-dev - Alerts
+- Prometheus Alerts
+- Build. Automate. Test.
+
+### Observações
+
+Durante a validação, o Prometheus inicialmente apareceu sem resposta na porta 9091. A stack de monitoramento foi recriada com Docker Compose, e a publicação de porta voltou ao estado esperado:
+
+    0.0.0.0:9091->9090/tcp
+
+Após aguardar novo ciclo de scrape, os targets do Prometheus passaram de unknown para up.
+
+### Decisão
+
+Manter o LabOps em Ubuntu 26.04 LTS e seguir com o fechamento da release v1.6.0 - Alerts após a documentação final e validação de release.

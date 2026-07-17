@@ -194,6 +194,15 @@ Dashboard no Grafana:
     -> LabOps Containers
 
 
+
+## Engineering Log
+
+O historico tecnico do projeto fica registrado em:
+
+    docs/ENGINEERING_LOG.md
+
+Esse arquivo documenta mudancas importantes de ambiente, validacoes, upgrades e decisoes tecnicas do LabOps.
+
 ## Alerts
 
 A partir da versao v1.6.0-dev, o LabOps inclui uma base inicial de alertas no Prometheus.
